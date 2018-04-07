@@ -1,0 +1,20 @@
+Error 
+=====
+
+Error occured while trying to install mongodb-org-server-3.6.3-0.1.latest.el7.x86_64
+with yum install mongodb-org-server-3.6.3-0.1.latest.el7.x86_64
+
+Error Display
+=============
+error: %pre(mongodb-org-server-3.6.3-0.1.latest.el7.x86_64) scriptlet failed, exit status 4
+Error in PREIN scriptlet in rpm package mongodb-org-server-3.6.3-0.1.latest.el7.x86_64
+
+Solution
+========
+
+su -c 'yum clean all && rpm --rebuilddb'
+su -c 'package-cleanup --problems'
+su -c 'yum   mongodb-org-server*'
+rpm -ql  mongodb-org-server
+
+yum --setopt=tsflags=noscripts install mongodb-org-server-3.6.3-0.1.latest.el7.x86_64
